@@ -5,7 +5,7 @@ export function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname
 
   // Define protected routes
-  const protectedRoutes = ['/create-profile', '/payments']
+  const protectedRoutes = ['/create-profile', '/billing']
 
   // Check if the path is a protected route
   if (protectedRoutes.includes(path)) {
@@ -21,5 +21,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/create-profile', '/payments'],
+  matcher: ['/create-profile', '/billing'],
 }

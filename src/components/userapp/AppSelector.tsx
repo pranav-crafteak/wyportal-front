@@ -2,29 +2,32 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { fetchApps } from '@/lib/api';
-import { App } from '@/types';
-import TemplateSelectionModal from '@/components/userapp/TemplateSelectionModal';
+import { fetchApps, fetchTemplates } from '@/lib/api';
+import { App, Template } from '@/types';
+import TemplateSelectionModal from './TemplateSelectionModal';
 
-const DashboardContent: React.FC = () => {
+const AppSelector: React.FC = () => {
   const [apps, setApps] = useState<App[]>([]);
+  const [templates, setTemplates] = useState<Template[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
-    const loadApps = async () => {
+    const loadData = async () => {
       try {
-        const appsData = await fetchApps();
+        const [appsData, templatesData] = await Promise.all([fetchApps(), fetchTemplates()]);
         setApps(appsData);
+        setTemplates(templatesData);
       } catch (error) {
-        console.error('Error loading apps:', error);
+        console.error('Error loading data:', error);
+        // Handle error (e.g., show error message to user)
       }
     };
-    loadApps();
+    loadData();
   }, []);
 
   const handleAppSelect = (appId: string) => {
-    router.push(`/dashboard/${appId}`);
+    router.push(`/dashboard?appId=${appId}`);
   };
 
   const handleCreateNewApp = () => {
@@ -57,14 +60,10 @@ const DashboardContent: React.FC = () => {
       <TemplateSelectionModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        onTemplateSelect={(templateId) => {
-          console.log('Selected template:', templateId);
-          setIsModalOpen(false);
-          // Implement new app creation logic here
-        }}
+        templates={templates}
       />
     </div>
   );
 };
 
-export default DashboardContent;
+export default AppSelector;

@@ -7,6 +7,13 @@ export default function Home() {
       <h1 className="text-4xl font-bold mb-4">Build Your Web App Without Code</h1>
       <Image src="/images/banner.jpg" alt="Banner" width={1200} height={400} className="rounded-lg mb-8" />
 
+      <div className="mb-8">
+        <h2 className="text-3xl font-bold mb-4">Simplifying Web App Creation</h2>
+        <p className="text-lg mb-4">
+          Wynoot is a no-code platform that helps creators and businesses build web apps quickly and easily. Turn your ideas into reality without any coding skills.
+        </p>
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
         <FeatureCard
           title="Quick Setup"
@@ -26,7 +33,7 @@ export default function Home() {
       </div>
 
       <div className="mb-8">
-        <h2 className="text-3xl font-bold mb-4">Why Choose Our Platform?</h2>
+        <h2 className="text-3xl font-bold mb-4">Why Choose Wynoot?</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
             <Image src="/images/thumbnail1.jpg" alt="Security First" width={400} height={300} className="rounded-lg mb-4" />
@@ -48,10 +55,10 @@ export default function Home() {
       </div>
 
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold mb-4">Ready to Build Your Web App?</h2>
-        <p className="mb-4">Join thousands of businesses who have transformed their online presence with our platform.</p>
+        <h2 className="text-3xl font-bold mb-4">Ready to Create Your Web App?</h2>
+        <p className="mb-4">Join the community of creators and businesses who have simplified their online presence with Wynoot.</p>
         <Link href="/choose-template" className="bg-blue-500 text-white px-6 py-3 rounded-lg text-lg hover:bg-blue-600 transition duration-300">
-          Start Your Free Trial
+          Start Building for Free
         </Link>
       </div>
     </div>

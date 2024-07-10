@@ -1,68 +1,73 @@
 "use client";
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
+import UserMenu from '@/components/auth/UserMenu';
+import Sidebar from './Sidebar';
+import { signOut } from '@/lib/api'; // Import the signOut function
 
-interface NavbarProps {
-  onToggleSidebar: () => void;
-}
-
-const Navbar: React.FC<NavbarProps> = ({ onToggleSidebar }) => {
+const Navbar: React.FC = () => {
   const pathname = usePathname();
+  const router = useRouter();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  useEffect(() => {
+    const loginStatus = localStorage.getItem('isLoggedIn');
+    setIsLoggedIn(loginStatus === 'true');
+  }, [pathname]);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
+  const handleLogout = async () => {
+    try {
+      await signOut(); // Call the signOut function from api.ts
+      localStorage.removeItem('isLoggedIn');
+      setIsLoggedIn(false);
+      router.push('/');
+    } catch (error) {
+      console.error('Logout failed:', error);
+    }
+  };
 
   return (
-    <nav className="bg-white shadow-md py-4">
-      <div className="container mx-auto flex justify-between items-center">
-        <Link href="/" className="text-lg font-bold text-gray-800">
-          My App
-        </Link>
-        <button
-          className="md:hidden text-gray-500 hover:text-gray-800"
-          onClick={onToggleSidebar}
-        >
-          <span className="font-bold">Menu</span>
-        </button>
-        <div className="hidden md:flex md:items-center md:space-x-4">
-          <Link
-            href="/about"
-            className={`nav-link ${pathname === '/about' ? 'active' : ''}`}
-          >
-            About
+    <>
+      <nav className="bg-white shadow-md py-4">
+        <div className="container mx-auto flex justify-between items-center">
+          <Link href="/" className="text-lg font-bold text-gray-800">
+            Wynoot
           </Link>
-          <Link
-            href="/choose-template"
-            className={`nav-link ${pathname === '/choose-template' ? 'active' : ''}`}
+          <button
+            className="md:hidden text-gray-500 hover:text-gray-800"
+            onClick={toggleSidebar}
           >
-            Choose Template
-          </Link>
-          <Link
-            href="/create-profile"
-            className={`nav-link ${pathname === '/create-profile' ? 'active' : ''}`}
-          >
-            Create Profile
-          </Link>
-          <Link
-            href="/payments"
-            className={`nav-link ${pathname === '/payments' ? 'active' : ''}`}
-          >
-            Payments
-          </Link>
-          <Link
-            href="/select-app"
-            className={`nav-link ${pathname === '/select-app' ? 'active' : ''}`}
-          >
-            Select App
-          </Link>
-          <Link
-            href="/dashboard"
-            className={`nav-link ${pathname === '/dashboard' ? 'active' : ''}`}
-          >
-            Dashboard
-          </Link>
+            <span className="font-bold">Menu</span>
+          </button>
+          <div className="hidden md:flex md:items-center md:space-x-4">
+            <Link
+              href="/about"
+              className={`nav-link ${pathname === '/about' ? 'active' : ''}`}
+            >
+              About
+            </Link>
+            {isLoggedIn ? (
+              <UserMenu onLogout={handleLogout} />
+            ) : (
+              <Link
+                href="/login"
+                className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+              >
+                Login/Signup
+              </Link>
+            )}
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+      <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
+    </>
   );
 };
 

@@ -1,6 +1,6 @@
-import { App, AppMetadata } from '@/types';
+import { App, AppMetadata, Template } from '@/types';
 
-// This is a placeholder for AWS Amplify integration
+// Existing authentication functions
 export const signUp = async (username: string, password: string, email: string) => {
     // Implement AWS Amplify sign up logic here
     console.log('Sign up:', { username, email })
@@ -19,8 +19,7 @@ export const signOut = async () => {
     return { success: true }
 }
 
-
-
+// Existing app fetching functions
 export const fetchApps = async (): Promise<App[]> => {
     const response = await fetch('/data/apps.json');
     const apps = await response.json();
@@ -31,4 +30,11 @@ export const fetchAppMetadata = async (appId: string): Promise<AppMetadata> => {
     const response = await fetch(`/data/${appId}/appmetadata.json`);
     const metadata = await response.json();
     return metadata;
+};
+
+// New function to fetch templates
+export const fetchTemplates = async (): Promise<Template[]> => {
+    const response = await fetch('/data/templates.json');
+    const templates = await response.json();
+    return templates;
 };

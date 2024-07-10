@@ -5,49 +5,80 @@
 @layer base {
   @import './fonts.css';
 
+  html {
+    @apply scroll-smooth;
+  }
+
   body {
     @apply text-gray-800;
     font-family: 'Inter', sans-serif;
   }
+
+  body.sidebar-open {
+    @apply overflow-hidden;
+  }
+
+  h1 {
+    @apply text-4xl font-bold mb-4;
+  }
+
+  h2 {
+    @apply text-2xl font-bold mb-2;
+  }
+
+  p {
+    @apply mb-4;
+  }
 }
 
-/* Typography */
-h1 {
-  @apply text-4xl font-bold mb-4;
+@layer components {
+  .btn {
+    @apply inline-block px-6 py-3 rounded-md font-medium transition duration-150 ease-in-out;
+  }
+
+  .btn-primary {
+    @apply bg-blue-500 text-white hover:bg-blue-600;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-200 text-gray-800 hover:bg-gray-300;
+  }
+
+  .card {
+    @apply bg-white rounded-md shadow-md p-6;
+  }
+
+  .form-control {
+    @apply block w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-300 transition duration-150 ease-in-out;
+  }
+
+  .sidebar-overlay {
+    @apply fixed inset-0 bg-black bg-opacity-50 z-50 transition-opacity duration-300;
+  }
+
+  .sidebar {
+    @apply fixed top-0 right-0 w-80 h-full bg-white shadow-lg transform transition-transform duration-300 ease-in-out;
+  }
+
+  .sidebar-link {
+    @apply block px-6 py-3 text-gray-800 hover:text-blue-600 transition duration-150 ease-in-out;
+  }
+
+  .sidebar-link-active {
+    @apply text-blue-600 font-semibold;
+  }
 }
 
-h2 {
-  @apply text-2xl font-bold mb-2;
-}
+@layer utilities {
+  .container {
+    @apply mx-auto px-4 sm:px-6 lg:px-8;
+  }
 
-p {
-  @apply mb-4;
-}
+  .text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  }
 
-/* Buttons */
-.btn {
-  @apply inline-block px-6 py-3 rounded-md font-medium transition;
-}
-
-.btn-primary {
-  @apply bg-blue-500 text-white hover:bg-blue-600;
-}
-
-.btn-secondary {
-  @apply bg-gray-200 text-gray-800 hover:bg-gray-300;
-}
-
-/* Cards */
-.card {
-  @apply bg-white rounded-md shadow-md p-6;
-}
-
-/* Forms */
-.form-control {
-  @apply block w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring focus:ring-blue-200;
-}
-
-/* Utilities */
-.container {
-  @apply mx-auto px-4 sm:px-6 lg:px-8;
+  .hover-lift {
+    @apply transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg;
+  }
 }
