@@ -1,6 +1,22 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+interface FeatureCardProps {
+  title: string;
+  description: string;
+  icon: string;
+}
+
+function FeatureCard({ title, description, icon }: FeatureCardProps) {
+  return (
+    <div className="bg-white p-6 rounded-lg shadow-md">
+      <Image src={`/icons/${icon}`} alt={title} width={48} height={48} className="mb-4" />
+      <h3 className="text-xl font-semibold mb-2">{title}</h3>
+      <p>{description}</p>
+    </div>
+  );
+}
+
 export default function Home() {
   return (
     <div className="container mx-auto px-4">
@@ -51,7 +67,7 @@ export default function Home() {
       <div className="mb-8">
         <h2 className="text-3xl font-bold mb-4">Simplicity at Its Core</h2>
         <Image src="/images/tutorial-filler.jpg" alt="User-Friendly Interface" width={1200} height={400} className="rounded-lg mb-4" />
-        <p>We've designed our platform with user-friendliness in mind. Create, manage, and grow your web app with intuitive tools and interfaces.</p>
+        <p>We have designed our platform with user-friendliness in mind. Create, manage, and grow your web app with intuitive tools and interfaces.</p>
       </div>
 
       <div className="text-center mb-8">
@@ -61,16 +77,6 @@ export default function Home() {
           Start Building for Free
         </Link>
       </div>
-    </div>
-  );
-}
-
-function FeatureCard({ title, description, icon }) {
-  return (
-    <div className="bg-white p-6 rounded-lg shadow-md">
-      <Image src={`/icons/${icon}`} alt={title} width={48} height={48} className="mb-4" />
-      <h3 className="text-xl font-semibold mb-2">{title}</h3>
-      <p>{description}</p>
     </div>
   );
 }

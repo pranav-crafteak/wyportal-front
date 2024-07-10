@@ -1,31 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import TemplateCard from './TemplateCard';
+// TemplateSelectionModal.tsx
+import React from 'react';
 import { Template } from '@/types';
-import { fetchTemplates } from '@/lib/api';
 
 interface TemplateSelectionModalProps {
   isOpen: boolean;
   onClose: () => void;
   onTemplateSelect: (templateId: number) => void;
+  templates: Template[];
 }
 
-const TemplateSelectionModal: React.FC<TemplateSelectionModalProps> = ({ isOpen, onClose, onTemplateSelect }) => {
-  const [templates, setTemplates] = useState<Template[]>([]);
-
-  useEffect(() => {
-    const loadTemplates = async () => {
-      try {
-        const templatesData = await fetchTemplates();
-        setTemplates(templatesData);
-      } catch (error) {
-        console.error('Error loading templates:', error);
-      }
-    };
-    if (isOpen) {
-      loadTemplates();
-    }
-  }, [isOpen]);
-
+const TemplateSelectionModal: React.FC<TemplateSelectionModalProps> = ({
+  isOpen,
+  onClose,
+  onTemplateSelect,
+  templates
+}) => {
   if (!isOpen) return null;
 
   return (
@@ -34,8 +23,13 @@ const TemplateSelectionModal: React.FC<TemplateSelectionModalProps> = ({ isOpen,
         <h2 className="text-2xl font-bold mb-4">Choose a Template</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {templates.map((template) => (
-            <div key={template.id} onClick={() => onTemplateSelect(template.id)}>
-              <TemplateCard template={template} />
+            <div
+              key={template.id}
+              onClick={() => onTemplateSelect(template.id)}
+              className="cursor-pointer border rounded-lg p-4 hover:bg-gray-100"
+            >
+              <h3 className="font-semibold">{template.title}</h3>
+              <p>{template.description}</p>
             </div>
           ))}
         </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
+import { SessionProvider } from "next-auth/react";
 import '../styles/globals.css';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -47,12 +48,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="font-inter">
-        <Navbar onToggleSidebar={toggleSidebar} />
-        <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
-        <main className="container mx-auto px-4 py-8 flex-1">
-          {children}
-        </main>
-        <Footer />
+        <SessionProvider>
+          <Navbar onToggleSidebar={toggleSidebar} />
+          <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
+          <main className="container mx-auto px-4 py-8 flex-1">
+            {children}
+          </main>
+          <Footer />
+        </SessionProvider>
       </body>
     </html>
   );

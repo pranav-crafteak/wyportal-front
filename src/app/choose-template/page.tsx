@@ -1,10 +1,12 @@
-import TemplateCard from '@/components/templates/TemplateCard';
+import fs from 'fs/promises';
+import path from 'path';
 import { Template } from '@/types';
+import TemplateCard from '@/components/templates/TemplateCard';
 
 async function getTemplates(): Promise<Template[]> {
-  const templates = await import('/public/data/templates.json').then(
-    (module) => module.default
-  );
+  const filePath = path.join(process.cwd(), 'public', 'data', 'templates.json');
+  const jsonData = await fs.readFile(filePath, 'utf8');
+  const templates: Template[] = JSON.parse(jsonData);
   return templates;
 }
 

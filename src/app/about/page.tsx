@@ -9,7 +9,7 @@ const AboutContent: React.FC = () => {
       <div className="bg-blue-100 p-8 rounded-lg shadow-lg mb-8">
         <h2 className="text-2xl font-semibold mb-4">Simplifying Web App Creation</h2>
         <p className="text-lg">
-          Wynoot is a no-code platform that helps creators and businesses build web apps quickly and easily. We believe great ideas shouldn't be held back by technical barriers.
+          Wynoot is a no-code platform that helps creators and businesses build web apps quickly and easily. We believe great ideas should not be held back by technical barriers.
         </p>
       </div>
 

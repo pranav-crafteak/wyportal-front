@@ -1,3 +1,4 @@
+// AppSelector.tsx
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -34,6 +35,13 @@ const AppSelector: React.FC = () => {
     setIsModalOpen(true);
   };
 
+  const handleTemplateSelect = (templateId: number) => {
+    console.log('Selected template:', templateId);
+    setIsModalOpen(false);
+    // Add logic to create a new app with the selected template
+    // For example: router.push(`/create-app?templateId=${templateId}`);
+  };
+
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="flex justify-between items-center mb-6">
@@ -60,6 +68,7 @@ const AppSelector: React.FC = () => {
       <TemplateSelectionModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
+        onTemplateSelect={handleTemplateSelect}
         templates={templates}
       />
     </div>

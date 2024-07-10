@@ -9,7 +9,7 @@ const AboutContent: React.FC = () => {
       <div className="bg-blue-100 p-8 rounded-lg shadow-lg mb-8">
         <h2 className="text-2xl font-semibold mb-4">Our Vision</h2>
         <p className="text-lg">
-          WyPortal was born from a simple idea: everyone should have the power to create web applications, regardless of their technical background. We're on a mission to democratize web development and empower the next generation of digital innovators.
+          WyPortal was born from a simple idea: everyone should have the power to create web applications, regardless of their technical background. Our mission is to empower individuals and businesses to bring their ideas to life through the magic of no-code development.
         </p>
       </div>
 
@@ -32,7 +32,7 @@ const AboutContent: React.FC = () => {
       <div className="mb-8">
         <h2 className="text-2xl font-semibold mb-4">The Team Behind WyPortal</h2>
         <p className="mb-4">
-          Our diverse team of developers, designers, and entrepreneurs brings together decades of experience in web development, UX design, and business strategy. We're united by our passion for making technology accessible and our commitment to our users' success.
+          Our diverse team of developers, designers, and entrepreneurs brings together decades of experience in web development, UX design, and business strategy. We are united by our passion for making technology accessible and our commitment to our users&apos; success.
         </p>
         {/* Add team member photos or more details here */}
       </div>
@@ -50,7 +50,7 @@ const AboutContent: React.FC = () => {
       <div className="mb-8">
         <h2 className="text-2xl font-semibold mb-4">Join the WyPortal Community</h2>
         <p className="mb-4">
-          When you choose WyPortal, you're not just getting a product – you're joining a community of creators, innovators, and entrepreneurs. Share ideas, get inspired, and grow together with fellow WyPortal users.
+          When you choose WyPortal, you&apos;re not just getting a product – you&apos;re joining a community of creators, innovators, and entrepreneurs. Share ideas, get inspired, and grow together with fellow WyPortal users.
         </p>
         <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition duration-300">
           Join Our Community Forum
