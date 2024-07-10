@@ -1,0 +1,47 @@
+[
+    {
+      "id": 1,
+      "title": "Health Coach",
+      "description": "Perfect for health and wellness professionals to manage clients and track progress.",
+      "image": "/images/health-coach-template.jpg",
+      "multiUser": true,
+      "cloudZones": ["US-East", "EU-West"],
+      "instancePower": "Medium"
+    },
+    {
+      "id": 2,
+      "title": "YouTuber",
+      "description": "Ideal for content creators to manage videos, analytics, and audience engagement.",
+      "image": "/images/youtuber-template.jpg",
+      "multiUser": false,
+      "cloudZones": ["US-West", "Asia-Pacific"],
+      "instancePower": "High"
+    },
+    {
+      "id": 3,
+      "title": "Nutrition Institute",
+      "description": "Comprehensive solution for nutrition education and client management.",
+      "image": "/images/nutrition-institute-template.jpg",
+      "multiUser": true,
+      "cloudZones": ["US-East", "EU-Central", "Asia-Pacific"],
+      "instancePower": "High"
+    },
+    {
+      "id": 4,
+      "title": "Teacher",
+      "description": "Streamlined platform for educators to manage classes, assignments, and student progress.",
+      "image": "/images/teacher-template.jpg",
+      "multiUser": true,
+      "cloudZones": ["US-Central", "EU-West"],
+      "instancePower": "Medium"
+    },
+    {
+      "id": 5,
+      "title": "Custom Expertise",
+      "description": "Flexible template for various professions and custom requirements.",
+      "image": "/images/custom-expertise-template.jpg",
+      "multiUser": true,
+      "cloudZones": ["US-East", "US-West", "EU-Central", "Asia-Pacific"],
+      "instancePower": "Customizable"
+    }
+  ]

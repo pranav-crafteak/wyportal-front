@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @import './fonts.css';
+
+  body {
+    @apply text-gray-800;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+/* Typography */
+h1 {
+  @apply text-4xl font-bold mb-4;
+}
+
+h2 {
+  @apply text-2xl font-bold mb-2;
+}
+
+p {
+  @apply mb-4;
+}
+
+/* Buttons */
+.btn {
+  @apply inline-block px-6 py-3 rounded-md font-medium transition;
+}
+
+.btn-primary {
+  @apply bg-blue-500 text-white hover:bg-blue-600;
+}
+
+.btn-secondary {
+  @apply bg-gray-200 text-gray-800 hover:bg-gray-300;
+}
+
+/* Cards */
+.card {
+  @apply bg-white rounded-md shadow-md p-6;
+}
+
+/* Forms */
+.form-control {
+  @apply block w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring focus:ring-blue-200;
+}
+
+/* Utilities */
+.container {
+  @apply mx-auto px-4 sm:px-6 lg:px-8;
+}

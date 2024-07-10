@@ -1,0 +1,37 @@
+{
+    "pages": [
+      {
+        "id": "1",
+        "name": "Home",
+        "sections": [
+          {
+            "id": "1",
+            "type": "text",
+            "content": "Welcome to App 2!"
+          },
+          {
+            "id": "2",
+            "type": "image",
+            "content": "/images/banner.jpg"
+          }
+        ]
+      },
+      {
+        "id": "2",
+        "name": "About",
+        "sections": [
+          {
+            "id": "1",
+            "type": "text",
+            "content": "About App 2."
+          },
+          {
+            "id": "2",
+            "type": "image",
+            "content": "/images/thumbnail1.jpg"
+          }
+        ]
+      }
+    ]
+  }
+  
